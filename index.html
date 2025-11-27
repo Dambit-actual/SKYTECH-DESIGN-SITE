@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skytech Design — Aerial Imaging Services</title>
+  <style>
+  :root{
+  --bg:#0f172a; --fg:#111827; --muted:#6b7280;
+  --brand:#1e40af; --brand-2:#2563eb;
+  --paper:#ffffff; --paper-2:#f8fafc; --line:#e5e7eb;
+  --shadow:0 10px 30px rgba(0,0,0,.08); --radius:18px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial;color:var(--fg);background:var(--paper);}
+a{color:var(--brand-2);text-decoration:none;}a:hover{text-decoration:underline;}
+.container{width:min(1200px,92%);margin-inline:auto;}
+.btn{display:inline-block;padding:.85rem 1.15rem;border-radius:999px;font-weight:600;letter-spacing:.2px;border:2px solid transparent;font-size:.95rem;cursor:pointer;}
+.btn.primary{background:var(--brand-2);color:white;}
+.btn.outline{background:transparent;border-color:white;color:white;}
+.btn.light{background:white;border-color:var(--line);color:var(--brand-2);}
+.pill{display:inline-flex;gap:.5rem;align-items:center;padding:.3rem .7rem;border-radius:999px;background:rgba(255,255,255,.75);backdrop-filter:saturate(140%) blur(6px);border:1px solid rgba(255,255,255,.6);font-size:.8rem;}
+.topbar{position:fixed;inset-inline:0;top:0;z-index:10;background:linear-gradient(to bottom,rgba(15,23,42,.96),rgba(15,23,42,.8),transparent);color:white;}
+.topbar-inner{max-width:1200px;margin-inline:auto;padding:.6rem 4%;display:flex;align-items:center;justify-content:space-between;font-size:.9rem;}
+.brand{display:flex;align-items:center;gap:.5rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem;}
+.brand-mark{width:26px;height:26px;border-radius:999px;border:2px solid #60a5fa;display:grid;place-items:center;font-size:.7rem;}
+.nav-links{display:flex;gap:1rem;align-items:center;}
+.nav-links a{color:#e5e7eb;text-decoration:none;}
+.nav-links a:hover{color:white;}
+@media(max-width:780px){.nav-links{display:none;}}
+.hero-offset{height:3rem;}
+.hero{position:relative;isolation:isolate;}
+
+/* === MODIFIED HERO STYLES for Full-Width Image === */
+.hero-full-bg {
+    width: 100%;
+    height: 70vh; /* Set desired height for the banner */
+    background-image: url('hero-full-bg.png'); /* REPLACE with your image file path */
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    place-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+
+.hero-full-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Dark overlay for readability */
+    background: rgba(15, 23, 42, 0.25); 
+    z-index: 0;
+}
+
+.hero-content-simple {
+    position: relative;
+    z-index: 1;
+    padding: 0 4%;
+}
+/* ============================================== */
+
+.hero img.bg{width:100%;height:80vh;object-fit:cover;display:block;filter:saturate(105%) contrast(102%);}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,42,.60),rgba(15,23,42,.35) 40%,rgba(15,23,42,.75));z-index:0;}
+.hero-inner{position:absolute;inset:0;display:grid;place-items:center;z-index:1;}
+.hero-content{width:min(1100px,92%);margin-inline:auto;color:white;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);gap:2rem;align-items:center;}
+@media(max-width:960px){.hero-content{grid-template-columns:1fr;}}
+.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.07;margin:0 0 .6rem;}
+.hero p.lede{max-width:60ch;font-size:clamp(1rem,2.4vw,1.2rem);opacity:.95;margin:0 0 1.2rem;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem;font-size:.85rem;opacity:.9;}
+.hero-meta span{display:inline-flex;align-items:center;gap:.35rem;}
+.hero-meta span::before{content:"•";opacity:.7;}
+.hero-card{border-radius:var(--radius);background:rgba(15,23,42,.88);border:1px solid rgba(148,163,184,.7);padding:1.2rem;box-shadow:0 18px 40px rgba(0,0,0,.6);font-size:.9rem;}
+.hero-thumb{border-radius:14px;border:1px solid rgba(148,163,184,.8);background:radial-gradient(circle at 10% 0%,#0ea5e9,#1d4ed8 55%,#020617 100%);aspect-ratio:16/10;display:grid;place-items:center;color:white;font-size:.85rem;margin-bottom:.7rem;position:relative;overflow:hidden;}
+.hero-thumb::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% -10%,rgba(255,255,255,.4),transparent 40%);mix-blend-mode:screen;}
+section{padding:3.2rem 0;}
+section header h2{font-size:1.8rem;margin:.3rem 0;}
+section header p{color:var(--muted);max-width:70ch;margin:.3rem 0 1.2rem;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
+@media(max-width:960px){.grid3{grid-template-columns:1fr;}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.3rem 1.35rem;}
+.card h3{margin:.4rem 0 .3rem;font-size:1.1rem;}
+.muted{color:var(--muted);}
+.columns-2{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:start;}
+@media(max-width:960px){.columns-2{grid-template-columns:1fr;}}
+.list{display:grid;gap:.7rem;font-size:.95rem;}
+.list-item{display:flex;gap:.6rem;align-items:flex-start;}
+.dot{width:8px;height:8px;border-radius:999px;background:var(--brand-2);margin-top:.45rem;flex-shrink:0;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.4rem;}
+@media(max-width:960px){.steps{grid-template-columns:1fr 1fr;}}
+.step{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:1rem;font-size:.9rem;}
+.step span{display:inline-block;font-size:.8rem;color:var(--brand-2);font-weight:600;margin-bottom:.2rem;text-transform:uppercase;letter-spacing:.05em;}
+.scope{border:1px solid var(--line);border-radius:var(--radius);padding:1rem;background:var(--paper-2);font-size:.9rem;}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+@media(max-width:960px){.pricing{grid-template-columns:1fr;}}
+.price{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem;box-shadow:var(--shadow);}
+.price .amt{font-size:1.6rem;font-weight:800;color:var(--brand);}
+.check{list-style:none;margin:.8rem 0 0;padding:0;display:grid;gap:.45rem;font-size:.9rem;}
+.check li::before{content:"✓";color:var(--brand);margin-right:.5rem;}
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;}
+@media(max-width:960px){.contact-grid{grid-template-columns:1fr;}}
+.form-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem;box-shadow:var(--shadow);}
+label{display:block;font-size:.9rem;margin-bottom:.25rem;}
+input,textarea,select{width:100%;padding:.55rem .6rem;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:.9rem;margin-bottom:.8rem;}
+textarea{min-height:120px;resize:vertical;}
+.small{font-size:.8rem;color:var(--muted);}
+.cta-band{background:linear-gradient(135deg,#0b1226,#122042 55%,#0b3a7d);color:white;border-radius:var(--radius);padding:2rem;display:grid;gap:.6rem;align-items:center;margin-bottom:3rem;}
+.cta-band p{margin:0 0 .7rem;font-size:.95rem;max-width:52ch;}
+footer{background:#0b1020;color:#e5e7eb;padding:2.3rem 0;}
+footer a{color:#93c5fd;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;}
+@media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.footer-grid{grid-template-columns:1fr;}}
+
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">SD</div>
+        <div>Skytech Design</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+  <div class="hero-offset"></div>
+
+  <main class="container">
+    
+    <section id="home" class="hero hero-full-bg">
+      <div class="hero-content-simple">
+        <h1 style="font-size:clamp(3rem, 8vw, 4.5rem); margin: 0 0 0.5rem; text-shadow: 0 2px 8px rgba(0,0,0,0.4);">Skytech Design</h1>
+        <p class="lede" style="font-size:clamp(1.2rem, 3vw, 1.8rem); margin: 0 0 1.5rem;">Precision Aerial Imaging for Detailed Documentation</p>
+        <a class="btn primary" style="background: white; color: var(--brand-2); border-color: white;" href="#services">View Our Services</a>
+      </div>
+    </section>
+
+    <section id="services">
+      <header>
+        <h2>Services</h2>
+        <p>Structured aerial capture focused on visual documentation. No structural assessment, engineering opinion or compliance reporting is provided.</p>
+      </header>
+      <div class="grid3">
+        <div class="card" id="property">
+          <h3>Aerial Property Documentation</h3>
+          <p class="muted">High resolution imagery of roofs, facades and surrounding areas. Suitable for pre-works records, progress tracking, marketing angles and insurance documentation.</p>
+          <ul class="check">
+            <li>Orbit overview video of the property</li>
+            <li>Nadir stills for plan style context</li>
+            <li>Directional oblique images of key elevations</li>
+            <li>Curated high resolution stills of requested features</li>
+          </ul>
+        </div>
+        <div class="card" id="roof">
+          <h3>Visual Roof Survey (Imagery Only)</h3>
+          <p class="muted">Focused capture for roof visibility only. Built for roofers, builders and assessors who need to see detail clearly but handle diagnosis and reporting themselves.</p>
+          <ul class="check">
+            <li>Nadir grid over the roof area</li>
+            <li>Oblique passes from each side for edge visibility</li>
+            <li>Close range passes where safe and legal</li>
+            <li>Organised folders and GPS tagged imagery</li>
+          </ul>
+        </div>
+        <div class="card" id="mapping">
+          <h3>Aerial Mapping and Imaging</h3>
+          <p class="muted">Nadir photo grids for mapping, measurement and photogrammetry workflows. Suitable for construction sites, stockpiles and general site documentation.</p>
+          <ul class="check">
+            <li>Nadir grid flown with controlled overlap</li>
+            <li>Orthomosaic export on request</li>
+            <li>Optional elevation or 3D data where supported</li>
+            <li>Imagery sets ready for external processing tools</li>
+          </ul>
+        </div>
+      </div>
+    
+    <section id="deliverables">
+      <header>
+        <h2>Standard deliverables on each job</h2>
+        <p>A consistent set of outputs so your trade, assessor or internal team knows what to expect every time.</p>
+      </header>
+      <div class="columns-2">
+        <div class="list">
+          <div class="list-item">
+            <div class="dot"></div>
+            <div>
+              <strong>Orbit overview</strong><br>
+              <span class="muted">A 360 degree orbit video for context and general orientation around the site or structure.</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <div class="dot"></div>
+            <div>
+              <strong>Nadir imagery and orthomosaic</strong><br>
+              <span class="muted">Straight down images flown in a grid, processed into an orthomosaic on mapping jobs or kept as raw input for your own tools.</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <div class="dot"></div>
+            <div>
+              <strong>Directional obliques</strong><br>
+              <span class="muted">Angled images captured from multiple sides to expose edges, interfaces and roof fixtures.</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <div class="dot"></div>
+            <div>
+              <strong>High resolution still set</strong><br>
+              <span class="muted">A curated selection of clear stills of key areas, all with GPS EXIF and timestamps.</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <div class="dot"></div>
+            <div>
+              <strong>Organised folders</strong><br>
+              <span class="muted">Orbit, nadir, orthomosaic, obliques and stills separated into clearly named folders.</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <div class="dot"></div>
+            <div>
+              <strong>Imagery only</strong><br>
+              <span class="muted">No structural assessment, defect diagnosis or compliance statement is made. Interpretation remains with qualified professionals.</span>
+            </div>
+          </div>
+        </div>
+        
+    </section>
+    <div style="height: 1px; background: var(--line);"></div>
+
+
+    <section id="pricing">
+      <header>
+        <h2>Pricing structure</h2>
+        <p>Actual quotes depend on site size, complexity, travel and processing requirements. The bands below are indicative starting points.</p>
+      </header>
+      <div class="pricing">
+        <div class="price">
+          <h3>Aerial Property Documentation</h3>
+          <div class="amt">From $180–$350</div>
+          <ul class="check">
+            <li>Roof and property overview</li>
+            <li>Orbit, nadir and obliques</li>
+            <li>Curated stills for records</li>
+          </ul>
+        </div>
+        <div class="price">
+          <h3>Visual Roof Survey (Imagery Only)</h3>
+          <div class="amt">From $220–$420</div>
+          <ul class="check">
+            <li>Nadir and angled roof coverage</li>
+            <li>Stills and clips for your roofer or assessor</li>
+            <li>Organised delivery folders</li>
+          </ul>
+        </div>
+        <div class="price">
+          <h3>Aerial Mapping and Imaging</h3>
+          <div class="amt">From $300–$650</div>
+          <ul class="check">
+            <li>Nadir grid flown for mapping</li>
+            <li>Orthomosaic export on request</li>
+            <li>Optional elevation or 3D products</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+      
+      
+
+    <section id="contact">
+      <header>
+        <h2>Get a Quote</h2>
+        <p>Start your project with a clear, no-obligation price. Tell us about your site, what you need captured, and your timeline.</p>
+      </header>
+      <div class="contact-grid">
+                <div class="form-card">
+          <form action="mailto:steven@skytechdesign.com?subject=New%20Quote%20Request%20from%20Skytech%20Design" method="GET" enctype="text/plain">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="Name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="Email_Address" required>
+
+            <label for="service">Service Needed</label>
+            <select id="service" name="Service_Needed">
+              <option>Aerial Property Documentation</option>
+              <option>Visual Roof Survey (Imagery Only)</option>
+              <option>Aerial Mapping and Imaging</option>
+              <option>Other/Unsure</option>
+            </select>
+
+            <label for="site-address">Site Address or Location</label>
+            <input type="text" id="site-address" name="Site_Address" required>
+
+            <label for="details">Project Details & Requirements</label>
+            <textarea id="details" name="Project_Details" required></textarea>
+            <div class="small" style="margin-bottom: 1rem;">Include what you need to see and your project deadline.</div>
+
+            <button type="submit" class="btn primary" style="width:100%;">Request Your Quote</button>
+          </form>
+        </div>
+
+      </section>
+      
+      <div class="scope">
+          <strong>Scope and limitations</strong>
+          <p class="muted">Skytech Design provides visual documentation only. No part of these services constitutes:</p>
+          <ul class="muted" style="margin:0 0 0 1.1rem;padding:0;font-size:.9rem;">
+            <li>a structural inspection</li>
+            <li>engineering advice or certification</li>
+            <li>insurance assessment or opinion</li>
+            <li>compliance sign off under any code</li>
+          </ul>
+          <p class="muted">This is deliberate so that your own trusted trades, engineers or assessors remain responsible for judgments based on the imagery.</p>
+        </div>
+      </div>
+    
+    
+        <section id="compliance" style="padding: 2rem 0;">
+        <div class="scope" style="background: var(--paper-2); padding: 1.5rem;">
+            <strong>Regulatory Compliance</strong>
+            <p style="margin: .5rem 0 0; line-height: 1.6; color: var(--fg);">
+            <p class="muted">This business operates in accordance with regulations issued by the Civil Aviation Safety Authority. Current operations are primarily conducted under the CASA Excluded RPA Category using sub-2 kg aircraft within standard operating limitations.</p>
+
+ <p class="muted">The operator holds a current Remote Pilot Licence (RePL) and is qualified for higher-category operations up to sub-25 kg where required. All flights are conducted within approved operational limits and are fully covered by public liability aviation insurance. Certification and insurance documentation are available upon formal request.
+            </p>
+        </div>
+        </section>
+        <div>
+          <h3 style="margin-top: 0;">Contact Information</h3>
+          <p class="muted">We are based in South East Queensland, Australia, and provide responsive, professional aerial imaging services.</p>
+          <div class="list" style="margin-top: 1rem;">
+            <div class="list-item">
+              <div class="dot" style="background: var(--fg); margin-top: 0.1rem;"></div>
+              <div>
+                <strong>Email:</strong><br>
+                <a href="mailto:steven@skytechdesign.com">steven@skytechdesign.com</a>
+              </div>
+             </div>
+            <div class="list-item">
+              <div class="dot" style="background: var(--fg); margin-top: 0.1rem;"></div>
+              <div>
+                <strong>Phone/Whatsapp:</strong><br>
+                (+61) 0461 339 552
+              </div> 
+            </div>
+            <div class="list-item">
+              <div class="dot" style="background: var(--fg); margin-top: 0.1rem;"></div>
+              <div>
+                <strong>Location:</strong><br>
+                SEQ, Australia
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3 style="margin:0 0 .4rem">Skytech Design</h3>
+        <p class="muted" style="color:#c7d2fe">Aerial imaging and photogrammetry services based in South East Queensland.</p>
+      </div>
+      <div>
+        <strong>Navigation</strong><br>
+        <a href="#home">Home</a><br>
+        <a href="#services">Services</a><br>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <strong>Contact</strong><br>
+        (+61) 0461 339 552<br>
+        steven@skytechdesign.com<br>
+        SEQ, Australia
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
