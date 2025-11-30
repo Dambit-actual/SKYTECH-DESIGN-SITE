@@ -279,10 +279,12 @@ footer a{color:#93c5fd;}
         <p>Start your project with a clear, no-obligation price. Tell us about your site, what you need captured, and your timeline.</p>
       </header>
       <div class="form-card">
-    <form name="quote-request" method="POST" data-netlify="true">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="Name" required>
+    <form name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="quote-request">
 
+  <p style="display:none;">
+    <label>Don’t fill this out: <input name="bot-field"></label>
+  </p>
         <label for="email">Email Address</label>
         <input type="email" id="email" name="Email_Address" required>
 
